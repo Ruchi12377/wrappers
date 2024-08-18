@@ -16,27 +16,7 @@ pg15 = ["pgrx/pg15", "pgrx-tests/pg15", "supabase-wrappers/pg15"]
 pg16 = ["pgrx/pg16", "pgrx-tests/pg16", "supabase-wrappers/pg16"]
 pg_test = []
 
-helloworld_fdw = []
-bigquery_fdw = [
-    "gcp-bigquery-client",
-    "serde_json",
-    "serde",
-    "wiremock",
-    "futures",
-    "yup-oauth2",
-    "thiserror",
-]
-clickhouse_fdw = ["clickhouse-rs", "chrono", "chrono-tz", "regex", "thiserror"]
-stripe_fdw = [
-    "http",
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "serde_json",
-    "thiserror",
-    "url",
-]
-firebase_fdw = [
+helloworld_fdw = [
     "reqwest",
     "reqwest-middleware",
     "reqwest-retry",
@@ -44,126 +24,6 @@ firebase_fdw = [
     "yup-oauth2",
     "regex",
     "thiserror",
-]
-s3_fdw = [
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "aws-config",
-    "aws-sdk-s3",
-    "aws-smithy-http",
-    "aws-smithy-runtime-api",
-    "tokio",
-    "tokio-util",
-    "csv",
-    "async-compression",
-    "serde_json",
-    "http",
-    "parquet",
-    "futures",
-    "arrow-array",
-    "chrono",
-    "thiserror",
-]
-airtable_fdw = [
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "serde_json",
-    "serde",
-    "url",
-    "thiserror",
-]
-cognito_fdw = [
-    "aws-sdk-cognitoidentityprovider",
-    "aws-config",
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "http",
-    "serde_json",
-    "tokio",
-    "serde",
-    "url",
-    "thiserror",
-    "chrono",
-]
-logflare_fdw = [
-    "http",
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "serde_json",
-    "thiserror",
-    "url",
-]
-auth0_fdw = [
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "http",
-    "serde_json",
-    "serde",
-    "url",
-    "thiserror",
-]
-mssql_fdw = [
-    "tiberius",
-    "tokio",
-    "tokio-util",
-    "num-traits",
-    "thiserror",
-]
-redis_fdw = [
-    "redis",
-    "serde_json",
-    "thiserror",
-]
-wasm_fdw = [
-    "wasmtime",
-    "warg-client",
-    "warg-protocol",
-    "chrono",
-    "dirs",
-    "sha2",
-    "hex",
-    "thiserror",
-    "anyhow",
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "semver",
-    "serde",
-    "serde_json",
-    "jwt-simple",
-]
-notion_fdw = [
-    "reqwest",
-    "reqwest-middleware",
-    "reqwest-retry",
-    "http",
-    "serde_json",
-    "serde",
-    "url",
-    "thiserror",
-]
-# Does not include helloworld_fdw because of its general uselessness
-native_fdws = [
-    "airtable_fdw",
-    "bigquery_fdw",
-    "clickhouse_fdw",
-    "stripe_fdw",
-    "firebase_fdw",
-    "s3_fdw",
-    "logflare_fdw",
-    "auth0_fdw",
-    "mssql_fdw",
-    "redis_fdw",
-    "cognito_fdw",
-]
-all_fdws = [
-    "native_fdws",
-    "wasm_fdw",
 ]
 
 [dependencies]
@@ -205,7 +65,7 @@ aws-smithy-http = { version = "0.60.1", optional = true }
 aws-smithy-runtime-api = { version = "1.1.1", optional = true }
 
 # for cognito fdw
-aws-sdk-cognitoidentityprovider = {version ="1.10.0", optional = true}
+aws-sdk-cognitoidentityprovider = { version = "1.10.0", optional = true }
 
 
 csv = { version = "1.2", optional = true }
@@ -244,14 +104,14 @@ warg-client = { version = "0.7.0", optional = true }
 warg-protocol = { version = "0.7.0", optional = true }
 semver = { version = "1.0.23", optional = true }
 jwt-simple = { version = "0.12.9", default-features = false, features = [
-    "pure-rust"
+    "pure-rust",
 ], optional = true }
 dirs = { version = "5.0.1", optional = true }
 sha2 = { version = "0.10.8", optional = true }
 hex = { version = "0.4.3", optional = true }
 
 thiserror = { version = "1.0.48", optional = true }
-anyhow  = { version = "1.0.81", optional = true }
+anyhow = { version = "1.0.81", optional = true }
 
 [dev-dependencies]
 pgrx-tests = "=0.11.3"
