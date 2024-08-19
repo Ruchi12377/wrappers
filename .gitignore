@@ -16,3 +16,5 @@ cmake*/
 results/
 wrappers/results/
 wrappers/regression.*
+wrappers/src/fdw/bigquery_fdw/
+wrappers/src/fdw/firebase_fdw/
