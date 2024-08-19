@@ -1,14 +1,5 @@
 [workspace]
-members = [
-    "supabase-wrappers",
-    "supabase-wrappers-macros",
-    "wrappers",
-]
-exclude = [
-    "wasm-wrappers/fdw/helloworld_fdw",
-    "wasm-wrappers/fdw/snowflake_fdw",
-    "wasm-wrappers/fdw/paddle_fdw",
-]
+members = ["supabase-wrappers", "supabase-wrappers-macros", "wrappers"]
 resolver = "2"
 
 [profile.dev]
@@ -20,4 +11,3 @@ panic = "unwind"
 opt-level = 3
 lto = "fat"
 codegen-units = 1
-
