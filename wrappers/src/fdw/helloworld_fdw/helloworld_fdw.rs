@@ -227,12 +227,15 @@ impl ForeignDataWrapper<HelloWorldFdwError> for HelloWorldFdw {
     }
 
     fn iter_scan(&mut self, row: &mut Row) -> HelloWorldFdwResult<Option<()>> {
-        // if all source rows are consumed, stop data scan
-        Ok(self
-            .scan_result
-            .drain(0..1)
-            .last()
-            .map(|src_row| row.replace_with(src_row)))
+        if self.scan_result.is_empty() {
+            Ok(None)
+        } else {
+            Ok(self
+                .scan_result
+                .drain(0..1)
+                .last()
+                .map(|src_row| row.replace_with(src_row)))
+        }
     }
 
     fn end_scan(&mut self) -> HelloWorldFdwResult<()> {
